@@ -11,7 +11,7 @@ echo "MySQL Connection Succeeded<br><br>";
 
 //create the SQL select statement, notice the funky string concat at the end to variablize the query
 //based on using the GET attribute
-$sql = "SELECT first_name,last_name FROM employees where last_name = 'Weedman'";
+$sql = "SELECT first_name,last_name,hire_date FROM employees where last_name = 'Weedman'";
 
 //put the resultset into a variable, again object oriented way of doing things here
 $result = $conn->query($sql);
@@ -23,7 +23,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0){
 //print rows of records found in the database if any
     while($row = $result->fetch_assoc()){
-         echo "Employee: " . $row["first_name"]. " " . $row["last_name"]. "<br>";
+         echo "Employee: " . $row["first_name"]. " " . $row["last_name"]. " - Hire date: " .$row["hire_date"].  "<br>";
    }
  } else {
          echo "No Records Found";
